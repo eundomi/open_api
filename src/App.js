@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     //실제 검색API를 실행하고, 결과를 확인.
     axios
-      .get("https://dapi.kakao.com/v2/search/web", {
+      .get("https://dapi.kakao.com/v2/search/image", {
         params: {
           query: "그해우리는",
         },
@@ -37,11 +37,8 @@ function App() {
       {contents.map((dt) => {
         return (
           <div>
-            <div dangerouslySetInnerHTML={{ __html: dt.title }}></div>
-
-            <h1>{dt.title}</h1>
-            <h3>{dt.datetime}</h3>
-            <h5>{dt.contents}</h5>
+            <img src={dt.thumbnail_url}></img>
+            <div>{dt.datetime}</div>
             <hr />
           </div>
         );
